@@ -53,7 +53,7 @@ public class Sodoku {
 	private boolean isValid(int x, int y, int num) {
 		
 	
-		
+		/*
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
 				//System.out.println((i+(x/3)) + " og " + (j+(y/3)) + " \nx: " + x + " y: " + y + "\ni: " + i + " j: " + j + "\n");
@@ -63,21 +63,28 @@ public class Sodoku {
 			}
 		}
 		
-		
+		*/
 		
 		
 		
 		
 		
 		for (int col = 0; col < table.length; col++) {
-			for (int row = 0; row < table.length; row++) {
-				if (this.table[x][col].equals(Integer.toString(num))) {
+			//for (int row = 0; row < table.length; row++) {
+			
+				int m = 3 * Math.floor(x / 3) + Math.floor(col / 3);
+				int n = 3 * Math.floor(x / 3) + col % 3;
+			
+			
+				if (this.table
+			
+				if (this.table[x][col].equals(Integer.toString(num)) && this.table[row][y].equals(Integer.toString(num))) {
 					return false;
 				}
-				if (this.table[row][y].equals(Integer.toString(num))) {
-					return false;
-				}
-			}
+				//if (this.table[row][y].equals(Integer.toString(num))) {
+				//	return false;
+				//}
+			//}
 		}
 		
 		
