@@ -87,6 +87,39 @@ public class genUI extends JFrame {
 
 
 		jp = new GPanel();
+		
+		
+		JButton reload = new JButton("Reload");
+		reload.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Graphics g = jp.getGraphics();
+				
+				for (int i = 0; i < 9; i++) {
+					for (int i1 = 0; i1 < 9; i1++) {
+						jp.getGraphics().clearRect(i*50+20, i1*50+20, 40, 40);
+					}
+				}
+				
+				
+				Font currentFont = g.getFont();
+				Font newFont = currentFont.deriveFont(25f);
+				g.setFont(newFont);
+				
+				for (int y = 0; y < soTable.length; y++) {
+					for (int x = 0; x < soTable.length; x++) {
+						if (!soTable[y][x].equals(".")) {
+							g.drawString(soTable[y][x], (x)*50+36, (y)*50+48);
+						}
+					}
+				}
+			}
+		});
+		
+		
+		
 
 		JButton clear = new JButton("Clear");
 
@@ -115,7 +148,11 @@ public class genUI extends JFrame {
 				
 				String[][] solvedTable = solve.finnishedTable();
 
-				clear();
+				for (int i = 0; i < 9; i++) {
+					for (int i1 = 0; i1 < 9; i1++) {
+						jp.getGraphics().clearRect(i*50+20, i1*50+20, 40, 40);
+					}
+				}
 				
 				
 				
@@ -139,6 +176,7 @@ public class genUI extends JFrame {
 
 
 		JPanel panel1 = new JPanel();
+		panel1.add(reload);
 		panel1.add(clear);
 		panel1.add(solve);
 
