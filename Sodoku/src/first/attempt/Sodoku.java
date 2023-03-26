@@ -1,6 +1,7 @@
 package first.attempt;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -11,14 +12,20 @@ public class Sodoku {
 	
 	
 	public Sodoku(String[][] table) {
-		this.table = table;
+		this.table = copy(table);
 	}
 	
 	
 	
 	
 	
-	
+	public String[][] copy(String[][] input) {
+	      String[][] target = new String[input.length][];
+	      for (int i=0; i <input.length; i++) {
+	        target[i] = Arrays.copyOf(input[i], input[i].length);
+	      }
+	      return target;
+	}
 	
 	
 	private boolean isValid(int x, int y, int num) {
@@ -131,6 +138,10 @@ public class Sodoku {
 			System.out.println(" ------------------------------------");
 		}
 
+	}
+	
+	public String[][] finnishedTable() {
+		return this.table;
 	}
 	
 	
